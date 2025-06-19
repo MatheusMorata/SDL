@@ -13,11 +13,11 @@ int main(int argc, char *argv[]){
 
     // Cria janela
     janela = SDL_CreateWindow(
-        "Ola Mundo",
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        800,600,
-        SDL_WINDOW_SHOWN
+        "Ola Mundo", // Título da janela
+        SDL_WINDOWPOS_CENTERED, // Posição X da janela
+        SDL_WINDOWPOS_CENTERED, // Posição Y da janela
+        800,600, // Tamanho da janela
+        SDL_WINDOW_SHOWN // Indica se a janela está visível
     );
 
     // Verifica erro na criação da janela
