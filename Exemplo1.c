@@ -1,9 +1,11 @@
 #include <SDL.h>
 #include <stdio.h>
+#include <time.h>
 
 int main(int argc, char* argv[]) {
     SDL_Window* janela = NULL;
     SDL_Renderer* render = NULL;
+    srand(time(NULL)); // Inicializa números aleatórios
 
     // Inicializa SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -39,10 +41,19 @@ int main(int argc, char* argv[]) {
     }
 
     // Posição e tamanho inicial do quadrado
-    int x = 100;
-    int y = 100;
-    int tamanho = 10;
+    int x = 400;
+    int y = 300;
+    int tamanho = 30;
     SDL_Rect quadrado = { x, y, tamanho, tamanho };
+
+    // Quadrados não interativos
+    SDL_Rect quadrados[10];
+    for (int i = 0; i < 10; i++) {
+        quadrados[i].x = rand() % 800;  
+        quadrados[i].y = rand() % 600;          
+        quadrados[i].w = 10;           
+        quadrados[i].h = 10;           
+    }
 
     int rodando = 1;
     SDL_Event event;
@@ -78,6 +89,11 @@ int main(int argc, char* argv[]) {
         // Limpa a tela (cor de fundo branca)
         SDL_SetRenderDrawColor(render, 255, 255, 255, 255);
         SDL_RenderClear(render);
+
+        for(int i = 0; i <= 10; i++){
+            SDL_SetRenderDrawColor(render, 255, 0, 0, 255); // Cor: Vermelho 
+            SDL_RenderFillRect(render, &quadrados[i]);
+        }
 
         // Desenha o quadrado amarelo
         SDL_SetRenderDrawColor(render, 255, 255, 0, 255); // Cor: Amarelo 
