@@ -1,27 +1,26 @@
 #include <SDL.h>
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
+    SDL_Window* janela = NULL;
+    SDL_Renderer* render = NULL;
 
-    SDL_Window *janela = NULL;
-    SDL_Renderer *render = NULL;
-
-    // Verifica erro na inicialização do SDL
+    // Inicializa SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("Erro ao iniciar SDL: %s\n", SDL_GetError());
         return 1;
     }
 
-    // Cria janela
+    // Cria a janela
     janela = SDL_CreateWindow(
         "Ola Mundo", // Título da janela
-        SDL_WINDOWPOS_CENTERED, // Posição X
-        SDL_WINDOWPOS_CENTERED, // Posição Y
-        800, 600, // Tamanho da janela
+        SDL_WINDOWPOS_CENTERED, // Posição x inicial
+        SDL_WINDOWPOS_CENTERED, // Posição y inicial
+        800, 600, // Tamanho inicial
         SDL_WINDOW_SHOWN // Exibir a janela
     );
 
-    // Verifica erro na criação da janela
+    // Verifica erro ao criar janela
     if (!janela) {
         printf("Erro ao criar janela: %s\n", SDL_GetError());
         SDL_Quit();
@@ -30,6 +29,8 @@ int main(int argc, char *argv[]) {
 
     // Cria o render
     render = SDL_CreateRenderer(janela, -1, SDL_RENDERER_ACCELERATED);
+    
+    // Verifica erro ao criar render
     if (!render) {
         printf("Erro ao criar render: %s\n", SDL_GetError());
         SDL_DestroyWindow(janela);
@@ -37,43 +38,55 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Cor de fundo: branco
-    SDL_SetRenderDrawColor(render, 255, 255, 255, 255);
-    SDL_RenderClear(render);
+    // Posição e tamanho inicial do quadrado
+    int x = 100;
+    int y = 100;
+    int tamanho = 10;
+    SDL_Rect quadrado = { x, y, tamanho, tamanho };
 
-    // Apresenta na tela
-    SDL_RenderPresent(render);
-
-    // Loop de eventos
+    int rodando = 1;
     SDL_Event event;
-    int running = 1;
 
-    while (running) {
+    while (rodando) {
+        // Processa eventos
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
-                running = 0;
+                rodando = 0;
             }
-
-            // Evento de teclado
             if (event.type == SDL_KEYDOWN) {
                 switch (event.key.keysym.sym) {
                     case SDLK_w:
-                        printf("Tecla W pressionada\n");
-                        break;
-                    case SDLK_a:
-                        printf("Tecla A pressionada\n");
+                        y -= 10; // Move para cima
                         break;
                     case SDLK_s:
-                        printf("Tecla S pressionada\n");
+                        y += 10; // Move para baixo
+                        break;
+                    case SDLK_a:
+                        x -= 10; // Move para esquerda
                         break;
                     case SDLK_d:
-                        printf("Tecla D pressionada\n");
-                        break;
-                    default:
+                        x += 10; // Move para direita
                         break;
                 }
             }
         }
+
+        // Atualiza a posição do quadrado
+        quadrado.x = x;
+        quadrado.y = y;
+
+        // Limpa a tela (cor de fundo branca)
+        SDL_SetRenderDrawColor(render, 255, 255, 255, 255);
+        SDL_RenderClear(render);
+
+        // Desenha o quadrado amarelo
+        SDL_SetRenderDrawColor(render, 255, 255, 0, 255); // Cor: Amarelo 
+        SDL_RenderFillRect(render, &quadrado);
+
+        // Apresenta na tela
+        SDL_RenderPresent(render);
+
+        SDL_Delay(16); // Aproximadamente 60 FPS
     }
 
     // Limpeza
