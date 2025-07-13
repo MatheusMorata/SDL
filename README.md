@@ -9,6 +9,6 @@ O primeiro exemplo é um pequeno jogo em que o objetivo do jogador é conduzir u
 ```
 
 sudo apt install libsdl2-dev 
-gcc -o exemplo Exemplo1.c `sdl2-config --cflags --libs`
+gcc Exemplo1.c sdl_utils.c -o exemplo $(sdl2-config --cflags --libs)
 
 ```
