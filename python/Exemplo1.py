@@ -6,65 +6,6 @@ import sys
 import ctypes
 from utils import open_sdl, close_sdl
 
-# class SDLResources:
-#     def __init__(self):
-#         self.window = None
-#         self.renderer = None
-#         self.success = False
-#         self.error = ""
-
-# def open_sdl(window_title: str) -> SDLResources:
-#     """
-#     Inicializa SDL, cria janela e renderizador.
-#     Retorna um objeto SDLResources com o resultado.
-#     """
-#     resources = SDLResources()
-
-#     # Inicializa o SDL
-#     if sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO) < 0:
-#         resources.error = f"Erro ao iniciar SDL: {sdl2.SDL_GetError().decode('utf-8')}"
-#         return resources
-
-#     # Cria a janela
-#     resources.window = sdl2.SDL_CreateWindow(
-#         window_title.encode('utf-8'), # utf-8 obrigatório
-#         sdl2.SDL_WINDOWPOS_CENTERED,
-#         sdl2.SDL_WINDOWPOS_CENTERED,
-#         800, 600,
-#         sdl2.SDL_WINDOW_SHOWN
-#     )
-#     if not resources.window:
-#         resources.error = f"Erro ao criar window: {sdl2.SDL_GetError().decode('utf-8')}"
-#         sdl2.SDL_Quit()
-#         return resources
-
-#     # Cria o renderizador
-#     resources.renderer = sdl2.SDL_CreateRenderer(
-#         resources.window,
-#         -1, # Índice do driver de renderização (-1 para o primeiro disponível)
-#         sdl2.SDL_RENDERER_ACCELERATED | sdl2.SDL_RENDERER_PRESENTVSYNC # Acelerado por hardware e VSync
-#     )
-#     if not resources.renderer:
-#         resources.error = f"Erro ao criar render: {sdl2.SDL_GetError().decode('utf-8')}"
-#         sdl2.SDL_DestroyWindow(resources.window)
-#         sdl2.SDL_Quit()
-#         return resources
-
-#     resources.success = True
-#     return resources
-
-# def close_sdl(resources: SDLResources):
-#     """
-#     Libera os recursos SDL.
-#     """
-#     if resources.renderer:
-#         sdl2.SDL_DestroyRenderer(resources.renderer)
-#     if resources.window:
-#         sdl2.SDL_DestroyWindow(resources.window)
-#     sdl2.SDL_Quit()
-
-# --- Funções de Lógica do Jogo (equivalente às do main.c) ---
-
 # Função para verificar colisão entre dois retângulos (quadrados)
 def colisao_rects(rect_a: sdl2.SDL_Rect, rect_b: sdl2.SDL_Rect) -> bool:
     return (rect_a.x < rect_b.x + rect_b.w and
