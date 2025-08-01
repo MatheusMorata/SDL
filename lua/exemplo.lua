@@ -1,0 +1,1 @@
+local SDL = require("SDL") -- Importando a biblioteca lua-sdl2
