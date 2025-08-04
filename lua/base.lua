@@ -13,3 +13,7 @@ local janela = assert(SDL.createWindow{
     inicial_y = 400,
 })
 
+-- Cria o renderizador
+local renderizador = SDL.createRenderer(janela, -1, {
+    SDL.rendererFlags.Accelerated
+})
