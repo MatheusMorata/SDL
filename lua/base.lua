@@ -5,12 +5,12 @@ local init = SDL.init{SDL.flags.Video} -- Inicializando o sdl
 
 -- Criando a janela
 local janela = assert(SDL.createWindow{
-    titulo = 'Codigo base',
-    largura = 1280,
-    altura = 800,
-    flags = {SDL.window.Resizable}, -- Deixa a janela visível
-    inicial_x = 400,
-    inicial_y = 400,
+    title = 'Codigo base', -- Título
+    width = 600, -- Largura
+    height = 800, -- Altura
+    flags = {SDL.window.Resizable}, 
+    x = 400, -- Posição inicial da janela em x
+    y = 400, -- Posição inicial da janela em y
 })
 
 -- Cria o renderizador
