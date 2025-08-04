@@ -32,7 +32,4 @@ while visivel == true do
     end
 end
 
--- Libera recursos
-renderizador:destroy()
-janela:destroy()
 SDL.quit()
