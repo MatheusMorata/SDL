@@ -15,7 +15,7 @@ local janela = assert(SDL.createWindow{
 
 -- Cria o renderizador
 local renderizador = SDL.createRenderer(janela, -1, {
-    SDL.rendererFlags.Accelerated
+    SDL.rendererFlags.Software, SDL.rendererFlags.PresentVSync 
 })
 
 local visivel = true
@@ -30,7 +30,8 @@ while visivel == true do
             end
         end
     end
-    
+
+    renderizador:setDrawColor(255, 255, 255, 255) -- Não está ficando branco (DEBUGGAR)
     renderizador:present()
     SDL.delay(16)
 
