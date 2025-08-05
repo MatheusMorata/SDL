@@ -2,7 +2,6 @@ local SDL = require("SDL") -- Importando a biblioteca lua-sdl2
 
 local init = SDL.init{SDL.flags.Video} -- Inicializando o sdl
 
-
 -- Criando a janela
 local janela = assert(SDL.createWindow{
     title = 'Exemplo', -- Título
@@ -31,7 +30,7 @@ while visivel == true do
         end
     end
 
-    renderizador:setDrawColor(255, 255, 255, 255) 
+    renderizador:setDrawColor(0, 0, 0, 255) 
     renderizador:present()
     SDL.delay(16)
 

@@ -9,8 +9,8 @@ local janela = assert(SDL.createWindow{
     width = 800, -- Largura
     height = 600, -- Altura
     flags = {SDL.window.Resizable}, 
-    x = 400, -- Posição inicial da janela em x
-    y = 400, -- Posição inicial da janela em y
+    x = SDL.window.PosCentered, -- Posição inicial da janela em x (centralizado)
+    y = SDL.window.PosCentered, -- Posição inicial da janela em y (centralizado)
 })
 
 -- Cria o renderizador
