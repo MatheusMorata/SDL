@@ -31,6 +31,20 @@ local gramaDireita = {
     y = 0  -- Posição no eixo y
 }
 
+local faixaD = {
+    w = 10, -- Largura 
+    h = 600, -- Altura
+    x = 400, -- Posição no eixo x
+    y = 0  -- Posição no eixo y
+}
+
+local faixaE = {
+    w = 10, -- Largura 
+    h = 600, -- Altura
+    x = 380, -- Posição no eixo x
+    y = 0  -- Posição no eixo y
+}
+
 local visivel = true
 while visivel == true do
     -- Eventos
@@ -44,6 +58,7 @@ while visivel == true do
         end
     end
 
+    -- Asfalto
     renderizador:setDrawColor({r = 120, g = 120, b = 120}) -- Cinza 
     renderizador:clear() -- Limpa tela
 
@@ -54,6 +69,13 @@ while visivel == true do
     -- grama lado direito
     renderizador:setDrawColor({r = 0, g = 255, b = 0}) -- Verde 
     renderizador:fillRect(gramaDireita)
+
+    -- faixas das via
+    renderizador:setDrawColor({r = 255, g = 255, b = 0}) -- Amarelo 
+    renderizador:fillRect(faixaD)
+
+    renderizador:setDrawColor({r = 255, g = 255, b = 0}) -- Amarelo 
+    renderizador:fillRect(faixaE)
 
     renderizador:present() -- Apresenta
     SDL.delay(16)
