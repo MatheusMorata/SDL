@@ -17,10 +17,17 @@ local renderizador = SDL.createRenderer(janela, -1, {
     SDL.rendererFlags.Software
 })
 
-local grama = {
+local gramaEsquerda = {
     w = 200, -- Largura 
     h = 600, -- Altura
     x = 0, -- Posição no eixo x
+    y = 0  -- Posição no eixo y
+}
+
+local gramaDireita = {
+    w = 200, -- Largura 
+    h = 600, -- Altura
+    x = 600, -- Posição no eixo x
     y = 0  -- Posição no eixo y
 }
 
@@ -40,11 +47,15 @@ while visivel == true do
     renderizador:setDrawColor({r = 120, g = 120, b = 120}) -- Cinza 
     renderizador:clear() -- Limpa tela
 
+    -- grama lado esquerdo
     renderizador:setDrawColor({r = 0, g = 255, b = 0}) -- Verde 
-    renderizador:fillRect(grama)
+    renderizador:fillRect(gramaEsquerda)
+    
+    -- grama lado direito
+    renderizador:setDrawColor({r = 0, g = 255, b = 0}) -- Verde 
+    renderizador:fillRect(gramaDireita)
+
     renderizador:present() -- Apresenta
-
-
     SDL.delay(16)
 
 end
