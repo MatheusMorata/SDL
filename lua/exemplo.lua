@@ -30,7 +30,8 @@ while visivel == true do
         end
     end
 
-    renderizador:setDrawColor(0, 0, 0, 255) 
+    renderizador:setDrawColor({r = 120, g = 120, b = 120}) -- Cinza 
+    renderizador:clear()
     renderizador:present()
     SDL.delay(16)
 
