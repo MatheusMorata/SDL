@@ -17,6 +17,13 @@ local renderizador = SDL.createRenderer(janela, -1, {
     SDL.rendererFlags.Software
 })
 
+local grama = {
+    w = 200, -- Largura 
+    h = 600, -- Altura
+    x = 0, -- Posição no eixo x
+    y = 0  -- Posição no eixo y
+}
+
 local visivel = true
 while visivel == true do
     -- Eventos
@@ -31,8 +38,13 @@ while visivel == true do
     end
 
     renderizador:setDrawColor({r = 120, g = 120, b = 120}) -- Cinza 
-    renderizador:clear()
-    renderizador:present()
+    renderizador:clear() -- Limpa tela
+
+    renderizador:setDrawColor({r = 0, g = 255, b = 0}) -- Verde 
+    renderizador:fillRect(grama)
+    renderizador:present() -- Apresenta
+
+
     SDL.delay(16)
 
 end
