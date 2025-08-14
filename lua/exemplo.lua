@@ -67,6 +67,11 @@ local carroNpcDimensoes = {
     y = 100  
 }
 
+
+local npcRotacao = 45
+local npcPivot = {x = carroNpcDimensoes.w / 2, y = carroNpcDimensoes.h / 2}
+
+
 local visivel = true
 while visivel == true do
     -- Eventos
@@ -104,7 +109,6 @@ while visivel == true do
     renderizador:copy(carroNPC, nil, carroNpcDimensoes)
 
     renderizador:present() -- Apresenta
-    SDL.delay(16)
 
 end
 
