@@ -13,8 +13,8 @@ local janela = assert(SDL.createWindow{
     width = 800, -- Largura
     height = 600, -- Altura
     flags = {SDL.window.Resizable}, 
-    x = 400, -- Posição inicial da janela em x
-    y = 400, -- Posição inicial da janela em y
+    x = SDL.window.centralized, -- Posição inicial da janela em x
+    y = SDL.window.centralized, -- Posição inicial da janela em y
 })
 
 -- Cria o renderizador
