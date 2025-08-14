@@ -2,6 +2,9 @@ local SDL = require("SDL") -- Importando a biblioteca lua-sdl2
 local img = require("SDL.image") -- Importando subsistema de imagens
 
 local init = SDL.init{SDL.flags.Video} -- Inicializando o sdl
+local formats = img.init{img.flags.PNG} -- Inicializando subssitema de imagens 
+
+local imagem_carro = assert(img.load("img/carro.png"))
 
 -- Criando a janela
 local janela = assert(SDL.createWindow{
@@ -17,6 +20,8 @@ local janela = assert(SDL.createWindow{
 local renderizador = SDL.createRenderer(janela, -1, {
     SDL.rendererFlags.Software
 })
+
+local carro = renderizador:createTextureFromSurface(imagem_carro)
 
 local gramaEsquerda = {
     w = 200, -- Largura 
@@ -77,6 +82,8 @@ while visivel == true do
 
     renderizador:setDrawColor({r = 255, g = 255, b = 0}) -- Amarelo 
     renderizador:fillRect(faixaE)
+
+    renderizador:copy(carro)
 
     renderizador:present() -- Apresenta
     SDL.delay(16)
