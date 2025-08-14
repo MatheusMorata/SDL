@@ -5,6 +5,7 @@ local init = SDL.init{SDL.flags.Video} -- Inicializando o sdl
 local formats = img.init{img.flags.PNG} -- Inicializando subssitema de imagens 
 
 local imagem_carro = assert(img.load("img/carro.png"))
+local imagem_carro_npc = assert(img.load("img/NPC.png")) 
 
 -- Criando a janela
 local janela = assert(SDL.createWindow{
@@ -21,7 +22,8 @@ local renderizador = SDL.createRenderer(janela, -1, {
     SDL.rendererFlags.Software
 })
 
-local carro = renderizador:createTextureFromSurface(imagem_carro)
+local carroJogador = renderizador:createTextureFromSurface(imagem_carro)
+local carroNPC = renderizador:createTextureFromSurface(imagem_carro_npc)
 
 local gramaEsquerda = {
     w = 200, -- Largura 
@@ -51,11 +53,18 @@ local faixaE = {
     y = 0  
 }
 
-local carroDimensoes = {
+local carroJogadorDimensoes = {
     w = 100,  
     h = 100,
     x = 450,
     y = 500  
+}
+
+local carroNpcDimensoes = {
+    w = 100,  
+    h = 100,
+    x = 200,
+    y = 100  
 }
 
 local visivel = true
@@ -90,8 +99,9 @@ while visivel == true do
     renderizador:setDrawColor({r = 255, g = 255, b = 0}) -- Amarelo 
     renderizador:fillRect(faixaE)
 
-    -- Carro do jogador
-    renderizador:copy(carro, nil, carroDimensoes)
+    -- Carros
+    renderizador:copy(carroJogador, nil, carroJogadorDimensoes)
+    renderizador:copy(carroNPC, nil, carroNpcDimensoes)
 
     renderizador:present() -- Apresenta
     SDL.delay(16)
