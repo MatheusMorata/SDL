@@ -31,24 +31,31 @@ local gramaEsquerda = {
 }
 
 local gramaDireita = {
-    w = 200, -- Largura 
-    h = 600, -- Altura
-    x = 600, -- Posição no eixo x
-    y = 0  -- Posição no eixo y
+    w = 200,  
+    h = 600, 
+    x = 600, 
+    y = 0  
 }
 
 local faixaD = {
-    w = 10, -- Largura 
-    h = 600, -- Altura
-    x = 400, -- Posição no eixo x
-    y = 0  -- Posição no eixo y
+    w = 10,  
+    h = 600, 
+    x = 400, 
+    y = 0  
 }
 
 local faixaE = {
-    w = 10, -- Largura 
-    h = 600, -- Altura
-    x = 380, -- Posição no eixo x
-    y = 0  -- Posição no eixo y
+    w = 10,  
+    h = 600, 
+    x = 380,
+    y = 0  
+}
+
+local carroDimensoes = {
+    w = 100,  
+    h = 100,
+    x = 450,
+    y = 500  
 }
 
 local visivel = true
@@ -83,7 +90,8 @@ while visivel == true do
     renderizador:setDrawColor({r = 255, g = 255, b = 0}) -- Amarelo 
     renderizador:fillRect(faixaE)
 
-    renderizador:copy(carro)
+    -- Carro do jogador
+    renderizador:copy(carro, nil, carroDimensoes)
 
     renderizador:present() -- Apresenta
     SDL.delay(16)
