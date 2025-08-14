@@ -1,4 +1,5 @@
 local SDL = require("SDL") -- Importando a biblioteca lua-sdl2
+local img = require("SDL.image") -- Importando subsistema de imagens
 
 local init = SDL.init{SDL.flags.Video} -- Inicializando o sdl
 
