@@ -61,15 +61,13 @@ local carroJogadorDimensoes = {
 }
 
 local carroNpcDimensoes = {
-    w = 100,  
-    h = 100,
-    x = 200,
-    y = 100  
+    x = 250,  
+    y = 0,
+    w = 100,
+    h = 100  
 }
 
-
 local npcRotacao = 90
-local npcPivot = {x = carroNpcDimensoes.w / 2, y = carroNpcDimensoes.h / 2}
 
 local visivel = true
 while visivel == true do
@@ -93,11 +91,13 @@ while visivel == true do
         carroJogadorDimensoes.x = carroJogadorDimensoes.x - 3
     end
 
+    -- Carro não vai para grama
     if carroJogadorDimensoes.x > 500 then
         carroJogadorDimensoes.x = 500
     elseif carroJogadorDimensoes.x < 200 then
         carroJogadorDimensoes.x = 200
     end
+
     -- Asfalto
     renderizador:setDrawColor({r = 120, g = 120, b = 120}) -- Cinza 
     renderizador:clear() -- Limpa tela
@@ -119,8 +119,18 @@ while visivel == true do
 
     -- Carros
     renderizador:copy(carroJogador, nil, carroJogadorDimensoes)
-    renderizador:copy(carroNPC, nil, carroNpcDimensoes)
-
+    renderizador:copyEx({
+        texture = carroNPC,
+        source = nil,
+        destination = carroNpcDimensoes,
+        angle = npcRotacao,
+        center = {                             
+            x = carroNpcDimensoes.w/2,
+            y = carroNpcDimensoes.h/2
+        },
+        flip = SDL.rendererFlip.Horizontal
+    })
+   
     renderizador:present() -- Apresenta
     SDL.delay(16)
 
