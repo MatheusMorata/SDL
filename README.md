@@ -19,13 +19,13 @@ gcc Exemplo1.c sdl_utils.c -o exemplo $(sdl2-config --cflags --libs)
 # SDL - lua
 ## Exemplo 
 
-O exemplo desenvolvido em Lua é um experimento voltado para explorar a biblioteca LuaSDL2. Trata-se de um pequeno minigame em que você controla um veículo que está na contramão. O objetivo do jogo é simples, evitar colisões com outros veículos enquanto dirige.
+O exemplo desenvolvido em Lua é um experimento voltado para explorar a biblioteca LuaSDL2. Trata-se de um pequeno minigame em que você controla um veículo que está na contramão. O objetivo do jogo é simples, evitar colisões com outros veículos enquanto dirige. O movimento do carro é determinado pelas teclas A e D.
 
 ### Como rodar 
 
 ```
 
-luarocks luasdl2 
+luarocks install luasdl2 
 lua exemplo.lua
 
 ```
