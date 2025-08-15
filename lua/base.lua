@@ -24,10 +24,6 @@ while visivel == true do
     for e in SDL.pollEvent() do
         if e.type == SDL.event.Quit then
             visivel = false
-        elseif e.type == SDL.event.KeyDown then
-            if e.keysym.sym == SDL.key.Escape then
-                visivel = false
-            end
         end
     end
 end
