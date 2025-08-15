@@ -64,14 +64,14 @@ local carroNpcDimensoes = {
     w = 100,
     h = 100,
     x = 250,  
-    y = 0 
+    y = math.random(-800, 0) 
 }
 
 local carroNpcDimensoes2 = {
     w = 100,
     h = 100,
     x = 450,  
-    y = 0 
+    y = math.random(-800, 0)
 }
 
 
@@ -106,11 +106,17 @@ while visivel == true do
         carroJogadorDimensoes.x = 200
     end
 
-    carroNpcDimensoes.y = carroNpcDimensoes.y + 3 
+    -- Movimento em y dos carros do NPC
+    carroNpcDimensoes.y = carroNpcDimensoes.y + 6
+    carroNpcDimensoes2.y = carroNpcDimensoes2.y + 6 
     
     -- Carro NPC volta ao ponto de partida ao sair da tela
-    if carroNpcDimensoes.y > 1000 then
-        carroNpcDimensoes.y = 0
+    if carroNpcDimensoes.y > 900 then
+        carroNpcDimensoes.y = math.random(-800, 0)
+    end
+
+    if carroNpcDimensoes2.y > 900 then
+        carroNpcDimensoes2.y = math.random(-800, 0)
     end
 
     -- Asfalto
