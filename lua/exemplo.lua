@@ -61,11 +61,19 @@ local carroJogadorDimensoes = {
 }
 
 local carroNpcDimensoes = {
-    x = 250,  
-    y = 0,
     w = 100,
-    h = 100  
+    h = 100,
+    x = 250,  
+    y = 0 
 }
+
+local carroNpcDimensoes2 = {
+    w = 100,
+    h = 100,
+    x = 450,  
+    y = 0 
+}
+
 
 local npcRotacao = 90
 
@@ -130,6 +138,17 @@ while visivel == true do
         texture = carroNPC,
         source = nil,
         destination = carroNpcDimensoes,
+        angle = npcRotacao,
+        center = {                             
+            x = carroNpcDimensoes.w/2,
+            y = carroNpcDimensoes.h/2
+        },
+        flip = SDL.rendererFlip.Horizontal
+    })
+    renderizador:copyEx({
+        texture = carroNPC,
+        source = nil,
+        destination = carroNpcDimensoes2,
         angle = npcRotacao,
         center = {                             
             x = carroNpcDimensoes.w/2,
