@@ -4,6 +4,14 @@ local img = require("SDL.image") -- Importando subsistema de imagens
 local init = SDL.init{SDL.flags.Video} -- Inicializando o sdl
 local formats = img.init{img.flags.PNG} -- Inicializando subssitema de imagens 
 
+local function colisao(a, b)
+    return a.x < b.x + b.w and
+           a.x + a.w > b.x and
+           a.y + 10 < b.y + b.h and
+           a.y + a.h > b.y
+end
+
+-- Imagens
 local imagem_carro = assert(img.load("img/carro.png"))
 local imagem_carro_npc = assert(img.load("img/NPC.png")) 
 
@@ -22,6 +30,7 @@ local renderizador = SDL.createRenderer(janela, -1, {
     SDL.rendererFlags.Software
 })
 
+-- Texturas
 local carroJogador = renderizador:createTextureFromSurface(imagem_carro)
 local carroNPC = renderizador:createTextureFromSurface(imagem_carro_npc)
 
@@ -163,6 +172,9 @@ while visivel == true do
         flip = SDL.rendererFlip.Horizontal
     })
 
+    if colisao(carroJogadorDimensoes,carroNpcDimensoes) or colisao(carroJogadorDimensoes,carroNpcDimensoes2) then
+        visivel = false
+    end
     renderizador:present() -- Apresenta
     SDL.delay(16)
 
