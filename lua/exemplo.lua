@@ -93,6 +93,11 @@ while visivel == true do
         carroJogadorDimensoes.x = carroJogadorDimensoes.x - 3
     end
 
+    if carroJogadorDimensoes.x > 500 then
+        carroJogadorDimensoes.x = 500
+    elseif carroJogadorDimensoes.x < 200 then
+        carroJogadorDimensoes.x = 200
+    end
     -- Asfalto
     renderizador:setDrawColor({r = 120, g = 120, b = 120}) -- Cinza 
     renderizador:clear() -- Limpa tela
