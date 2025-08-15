@@ -172,9 +172,11 @@ while visivel == true do
         flip = SDL.rendererFlip.Horizontal
     })
 
+    -- Fecha o jogo se houver colisão
     if colisao(carroJogadorDimensoes,carroNpcDimensoes) or colisao(carroJogadorDimensoes,carroNpcDimensoes2) then
         visivel = false
     end
+
     renderizador:present() -- Apresenta
     SDL.delay(16)
 
