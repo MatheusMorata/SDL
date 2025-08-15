@@ -86,9 +86,9 @@ while visivel == true do
 
     -- Teclado
     if tecla[SDL.scancode.D] then
-        carroJogadorDimensoes.x = carroJogadorDimensoes.x + 3
+        carroJogadorDimensoes.x = carroJogadorDimensoes.x + 5
     elseif tecla[SDL.scancode.A] then
-        carroJogadorDimensoes.x = carroJogadorDimensoes.x - 3
+        carroJogadorDimensoes.x = carroJogadorDimensoes.x - 5
     end
 
     -- Carro não vai para grama
@@ -96,6 +96,13 @@ while visivel == true do
         carroJogadorDimensoes.x = 500
     elseif carroJogadorDimensoes.x < 200 then
         carroJogadorDimensoes.x = 200
+    end
+
+    carroNpcDimensoes.y = carroNpcDimensoes.y + 3 
+    
+    -- Carro NPC volta ao ponto de partida ao sair da tela
+    if carroNpcDimensoes.y > 1000 then
+        carroNpcDimensoes.y = 0
     end
 
     -- Asfalto
@@ -130,7 +137,7 @@ while visivel == true do
         },
         flip = SDL.rendererFlip.Horizontal
     })
-   
+
     renderizador:present() -- Apresenta
     SDL.delay(16)
 
