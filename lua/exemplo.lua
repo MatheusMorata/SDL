@@ -68,21 +68,29 @@ local carroNpcDimensoes = {
 }
 
 
-local npcRotacao = 45
+local npcRotacao = 90
 local npcPivot = {x = carroNpcDimensoes.w / 2, y = carroNpcDimensoes.h / 2}
-
 
 local visivel = true
 while visivel == true do
+
+    SDL.pumpEvents()
+
     -- Eventos
     for e in SDL.pollEvent() do
+        -- Fecha a janela ao clicar no X
         if e.type == SDL.event.Quit then
-            visivel = false
-        elseif e.type == SDL.event.KeyDown then
-            if e.keysym.sym == SDL.key.Escape then
-                visivel = false
-            end
+            visivel = false    
         end
+    end
+
+    local tecla = SDL.getKeyboardState()
+
+    -- Teclado
+    if tecla[SDL.scancode.D] then
+        carroJogadorDimensoes.x = carroJogadorDimensoes.x + 3
+    elseif tecla[SDL.scancode.A] then
+        carroJogadorDimensoes.x = carroJogadorDimensoes.x - 3
     end
 
     -- Asfalto
@@ -109,6 +117,7 @@ while visivel == true do
     renderizador:copy(carroNPC, nil, carroNpcDimensoes)
 
     renderizador:present() -- Apresenta
+    SDL.delay(16)
 
 end
 
