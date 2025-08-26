@@ -7,7 +7,7 @@ int main(int argc, char* args[]){
 
     // Criando uma janela 800x600 centralizada na tela
     SDL_Window* janela = SDL_CreateWindow(
-        "Ola Mundo", // Titulo
+        "Quadrado azul", // Titulo
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, // Posição x e y (centralizadas)
         800, 600, // Largura e Altura
         SDL_WINDOW_SHOWN // Flag para manter a janela visível
