@@ -3,3 +3,4 @@ venv/
 *.exe
 *.bat
 *.dll
+__pycache__/
