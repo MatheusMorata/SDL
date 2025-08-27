@@ -1,4 +1,4 @@
-#include <SDL2\SDL.h>
+#include <SDL2/SDL.h>
 #include <stdbool.h>
 
 int main(int argc, char* args[]){
@@ -48,9 +48,14 @@ int main(int argc, char* args[]){
         }
         SDL_SetRenderDrawColor(renderizador, 255, 255, 255, 0); // Colorindo fundo (branco)
         SDL_RenderClear(renderizador); // Limpa o renderizador
+
+
         SDL_RenderPresent(renderizador); // Atualizando a tela
         SDL_Delay(16); // Controle de tempo
     }
 
+
+
+    
     return 0;  
 }
