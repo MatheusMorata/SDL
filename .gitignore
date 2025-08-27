@@ -4,3 +4,4 @@ venv/
 *.bat
 *.dll
 __pycache__/
+build/
