@@ -1,7 +1,11 @@
 #include <SDL2\SDL.h>
+#include <stdbool.h>
 
 int main(int argc, char* args[]){
     
+    bool executando = true; 
+    SDL_Event e;
+
     // Inicializando a biblioteca
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -23,14 +27,32 @@ int main(int argc, char* args[]){
         20, 20 // Largura e Altura
     };
 
-    SDL_SetRenderDrawColor(renderizador, 255, 255, 255, 0); // Colorindo fundo (branco)
-    SDL_RenderClear(renderizador); // Limpa o renderizador
-    SDL_SetRenderDrawColor(renderizador, 0, 0, 255, 0); // Colorindo quadrado (azul)
-    SDL_RenderFillRect(renderizador, &quadrado);
-    SDL_RenderPresent(renderizador); // Atualizando a tela
-
-    // Janela fica aberta por 3 segundos
-    SDL_Delay(3000);
+    while(executando){
+        // Evento para fechar a janela [X] ou ALT + F4
+        while(SDL_PollEvent(&e) != 0){
+            if(e.type == SDL_QUIT){
+                executando = false;
+            }
+            // Verifica tecla pressionada
+            else if(e.type == SDL_KEYDOWN){
+                if(e.key.keysym.sym == SDLK_d){ // Tecla d pressionada
+                    quadrado.x += 10;
+                }else if(e.key.keysym.sym == SDLK_a){ // Tecla a pressionada
+                    quadrado.x -= 10;
+                }else if(e.key.keysym.sym == SDLK_s){ // Tecla s pressionada
+                    quadrado.y += 10;
+                }else if(e.key.keysym.sym == SDLK_w){ // Tecla w pressionada
+                    quadrado.y -= 10;
+                }
+            }
+        }
+        SDL_SetRenderDrawColor(renderizador, 255, 255, 255, 0); // Colorindo fundo (branco)
+        SDL_RenderClear(renderizador); // Limpa o renderizador
+        SDL_SetRenderDrawColor(renderizador, 0, 0, 255, 0); // Colorindo quadrado (azul)
+        SDL_RenderFillRect(renderizador, &quadrado);
+        SDL_RenderPresent(renderizador); // Atualizando a tela
+        SDL_Delay(16); // Controle de tempo
+    }
 
     return 0;  
 }
