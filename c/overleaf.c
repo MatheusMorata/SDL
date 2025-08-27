@@ -19,14 +19,14 @@ int main(int argc, char* args[]){
 
     // Criando quadrado
     SDL_Rect quadrado = {
-        40,
-        40,
-        20,
-        20
-    }
+        400, 300, // Posição x e y
+        20, 20 // Largura e Altura
+    };
 
     SDL_SetRenderDrawColor(renderizador, 255, 255, 255, 0); // Colorindo fundo (branco)
     SDL_RenderClear(renderizador); // Limpa o renderizador
+    SDL_SetRenderDrawColor(renderizador, 0, 0, 255, 0); // Colorindo quadrado (azul)
+    SDL_RenderFillRect(renderizador, &quadrado);
     SDL_RenderPresent(renderizador); // Atualizando a tela
 
     // Janela fica aberta por 3 segundos
