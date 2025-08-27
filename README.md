@@ -12,7 +12,8 @@ Cria quadrados na posição dos cliques do mouse
 ```
 
 sudo apt install libsdl2-dev 
-gcc Exemplo1.c sdl_utils.c -o exemplo $(sdl2-config --cflags --libs)
+gcc Exemplo1.c sdl_utils.c -o build/exemplo $(sdl2-config --cflags --libs)
+./build/exemplo
 
 ```
 
