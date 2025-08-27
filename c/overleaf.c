@@ -17,6 +17,14 @@ int main(int argc, char* args[]){
     // Criando renderizador
     SDL_Renderer *renderizador = SDL_CreateRenderer(janela, -1, 0);
 
+    // Criando quadrado
+    SDL_Rect quadrado = {
+        40,
+        40,
+        20,
+        20
+    }
+
     SDL_SetRenderDrawColor(renderizador, 255, 255, 255, 0); // Colorindo fundo (branco)
     SDL_RenderClear(renderizador); // Limpa o renderizador
     SDL_RenderPresent(renderizador); // Atualizando a tela
