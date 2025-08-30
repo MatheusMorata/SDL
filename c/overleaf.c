@@ -24,7 +24,7 @@ int main(int argc, char* args[]){
     // Criando quadrado
     SDL_Rect quadrado = {
         400, 300, // Posição x e y
-        20, 20 // Largura e Altura
+        50, 50 // Largura e Altura
     };
 
     while(executando){

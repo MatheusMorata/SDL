@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <stdbool.h>
+#include <SDL2/SDL_image.h> 
 
 int main(int argc, char* args[]){
     
@@ -24,8 +25,11 @@ int main(int argc, char* args[]){
     // Criando quadrado
     SDL_Rect quadrado = {
         400, 300, // Posição x e y
-        20, 20 // Largura e Altura
+        50, 50 // Largura e Altura
     };
+    SDL_Surface* superficie = IMG_Load("textura.png"); // Carrega a imagem em uma "superficie" temporaria
+    SDL_Texture* textura_quadrado = SDL_CreateTextureFromSurface(renderizador, superficie); // Cria uma textura otimizada para o renderizador a partir da superficie
+    SDL_FreeSurface(superficie); // Libera a superficie temporaria, pois nao precisamos mais dela
 
     while(executando){
         // Evento para fechar a janela [X] ou ALT + F4
@@ -48,14 +52,10 @@ int main(int argc, char* args[]){
         }
         SDL_SetRenderDrawColor(renderizador, 255, 255, 255, 0); // Colorindo fundo (branco)
         SDL_RenderClear(renderizador); // Limpa o renderizador
-
-
+        SDL_RenderCopy(renderizador, textura_quadrado, NULL, &quadrado); // Desenha a textura no lugar do quadrado colorido
         SDL_RenderPresent(renderizador); // Atualizando a tela
         SDL_Delay(16); // Controle de tempo
     }
-
-
-
     
     return 0;  
 }
