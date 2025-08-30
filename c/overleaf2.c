@@ -57,5 +57,10 @@ int main(int argc, char* args[]){
         SDL_Delay(16); // Controle de tempo
     }
     
+    // Liberando recursos
+    SDL_DestroyRenderer(renderizador);
+    SDL_DestroyWindow(janela);
+    SDL_Quit();
+
     return 0;  
 }
