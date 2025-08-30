@@ -22,11 +22,12 @@ fabrica = sdl2.ext.SpriteFactory(sdl2.ext.TEXTURE, renderer=renderizador)
 sprite_quadrado = fabrica.from_image("textura.png") 
 
 while executando:
+    # Evento para fechar a janela [X] ou ALT + F4
     for e in sdl2.ext.get_events():
         if e.type == sdl2.SDL_QUIT:
             executando = False
             break
-        
+        # Verifica tecla pressionada
         elif e.type == sdl2.SDL_KEYDOWN:
             sym = e.key.keysym.sym
             if sym == sdl2.SDLK_d:
