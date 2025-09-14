@@ -36,6 +36,7 @@ int main(int argc, char* argv[]){
     bool executando = true;
     SDL_Event evento;
     while (executando) {
+        // Evento para fechar a janela [X] ou ALT + F4
         SDL_WaitEvent(&evento);
         if (evento.type == SDL_QUIT) {
             executando = false;
