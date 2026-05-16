@@ -1,34 +1,33 @@
-local SDL = require("SDL")
+local SDL   = require "SDL"
 
-local LARGURA = 800
-local ALTURA = 600
+local LARGURA, ALTURA = 800, 600
 
-SDL.init(SDL.flags.Everything)
-
+SDL.init{SDL.flags.Everything}
 local janela = SDL.createWindow{
-    title = 'Hello World Evento',
+    title = "Hello World Evento", 
+    x = SDL.WINDOWPOS_CENTERED,
+    y = SDL.WINDOWPOS_CENTERED,
     width = LARGURA,
     height = ALTURA,
-    flags = {SDL.window.Resizable},
-    x = SDL.window.centered,
-    y = SDL.window.centered,
+    flags = SDL.WINDOW_SHOWN
 }
-
+                
 local renderizador = SDL.createRenderer(janela, -1, 0)
 
-renderizador:setDrawColor({0, 0, 0, 255})
+renderizador:setDrawColor({
+    r = 0,
+    g = 0,
+    b = 0
+})
+
 renderizador:clear()
 renderizador:present()
 
 local executando = true
 
 while executando do
-    local evento = SDL.waitEvent()
-    if evento and evento.type == SDL.event.Quit then
+    local e = SDL.waitEvent()
+    if e.type == SDL.event.Quit then
         executando = false
     end
 end
-
-renderizador:destroy()
-janela:destroy()
-SDL.quit()
