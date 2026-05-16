@@ -1,50 +1,53 @@
-local SDL = require("SDL")
-local IMG = require("SDL.image")
+local SDL   = require "SDL"
+local IMG   = require "SDL.image"
 
-local LARGURA = 800
-local ALTURA = 600
+local LARGURA, ALTURA = 800, 600
 
-SDL.init(SDL.flags.Video)
-IMG.init(IMG.flags.PNG)
+SDL.init{SDL.flags.Everything}
+IMG.init{IMG.flags.PNG}
 
 local janela = SDL.createWindow{
-    title = "Quadrado com textura",
+    title = "Quadrado com textura", 
+    x = SDL.WINDOWPOS_CENTERED,
+    y = SDL.WINDOWPOS_CENTERED,
     width = LARGURA,
     height = ALTURA,
-    flags = { SDL.window.Shown },
-    x = SDL.window.centered,
-    y = SDL.window.centered,
+    flags = SDL.WINDOW_SHOWN
 }
-
+                
 local renderizador = SDL.createRenderer(janela, -1, 0)
 
-renderizador:setDrawColor({r = 0, g = 0, b = 0})
+renderizador:setDrawColor({
+    r = 0,
+    g = 0,
+    b = 0
+})
 renderizador:clear()
 
 local quadrado = {
-    x = math.floor(LARGURA / 2 - 50),
-    y = math.floor(ALTURA / 2 - 50),
+    x = (LARGURA / 2) - 50 , 
+    y = (ALTURA / 2) - 50,
     w = 100,
     h = 100
 }
 
 local superficie = IMG.load("textura.png")
-local textura = renderizador:createTextureFromSurface(superficie)
+local textura_quadrado = renderizador:createTextureFromSurface(superficie)
+renderizador:copy(textura_quadrado, nil, quadrado)
+renderizador:setDrawColor({
+    r = 0,
+    g = 0,
+    b = 255
+})
 
-
-renderizador:copy(textura, nil, quadrado)
+renderizador:fillRect(quadrado)
 renderizador:present()
 
 local executando = true
+
 while executando do
-    local evento = SDL.waitEvent()
-    if evento and evento.type == SDL.event.Quit then
+    local e = SDL.waitEvent()
+    if e.type == SDL.event.Quit then
         executando = false
     end
-end
-
-textura:destroy()
-renderizador:destroy()
-janela:destroy()
-IMG.quit()
-SDL.quit()
+end 
