@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
     bool executando = true;
     SDL_Event evento;
     while (executando) {
-        SDL_WaitEvent(&evento);
+        SDL_WaitEventTimeout(&evento, 16);
         if (evento.type == SDL_QUIT) {
             executando = false;
         }
