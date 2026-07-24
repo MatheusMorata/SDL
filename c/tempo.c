@@ -28,7 +28,7 @@ int main(int argc, char* argv[]){
     float velocidade = 100.0f; 
 
     while (executando) {
-        while (SDL_PollEvent(&evento)) {
+        while (SDL_WaitEventTimeout(&evento, 16)) {
             if (evento.type == SDL_QUIT) {
                 executando = false;
             }
