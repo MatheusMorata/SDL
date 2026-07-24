@@ -24,10 +24,11 @@ renderizador:clear()
 renderizador:present()
 
 local executando = true
+local evento = nil
 
 while executando do
-    local e = SDL.waitEvent()
-    if e.type == SDL.event.Quit then
+    evento = SDL.waitEvent(16)
+    if evento and evento.type == SDL.event.Quit then
         executando = false
     end
 end
