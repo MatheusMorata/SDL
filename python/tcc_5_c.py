@@ -18,7 +18,7 @@ ultimoTempo = sdl2.SDL_GetTicks()
 velocidade = 100.0
 
 while running:
-    while sdl2.SDL_PollEvent(ctypes.byref(event)) != 0:
+    if sdl2.SDL_WaitEventTimeout(ctypes.byref(event), 16) != 0:
         if event.type == sdl2.SDL_QUIT:
             running = False
             
