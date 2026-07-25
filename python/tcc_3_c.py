@@ -18,7 +18,7 @@ executando = True
 evento = sdl2.SDL_Event()
 
 while executando:
-    while sdl2.SDL_PollEvent(ctypes.byref(evento)) != 0:
+    if sdl2.SDL_WaitEventTimeout(ctypes.byref(event), 16) != 0:
         if evento.type == sdl2.SDL_QUIT:
             executando = False
             
