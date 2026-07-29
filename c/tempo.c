@@ -24,9 +24,6 @@ int main(int argc, char* argv[]){
     bool executando = true;
     SDL_Event evento;
 
-    Uint32 ultimoTempo = SDL_GetTicks();
-    float velocidade = 100.0f; 
-
     while (executando) {
         while (SDL_WaitEventTimeout(&evento, 16)) {
             if (evento.type == SDL_QUIT) {
@@ -34,11 +31,7 @@ int main(int argc, char* argv[]){
             }
         }
 
-        Uint32 tempoAtual = SDL_GetTicks();
-        float deltaTime = (tempoAtual - ultimoTempo) / 100.0f; 
-        ultimoTempo = tempoAtual;
-
-        quadrado.x += (int)(velocidade * deltaTime);
+        quadrado.x += 2;
 
         if (quadrado.x > LARGURA) {
             quadrado.x = -quadrado.w;
