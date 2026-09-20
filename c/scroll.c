@@ -1,0 +1,19 @@
+#include "pico.h"
+
+int main(void)
+{
+    pico_init(1);
+    pico_set_size((Pico_Dim){450, 300}, (Pico_Dim){150, 100});
+    Pico_Pos pos = pico_pos((Pico_Pct){50, 50});
+    pico_set_zoom((Pico_Pct){50, 50});
+    pico_set_scroll((Pico_Pos){20, 10});
+    while (1) {
+        pico_output_clear();
+        pico_output_draw_image(pos, "tux.png");
+        pico_output_present();
+        pico_input_event(NULL, PICO_ANY);
+    }
+
+    pico_init(0);
+    return 0;
+}
